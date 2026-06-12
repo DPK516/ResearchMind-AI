@@ -29,3 +29,49 @@ The application is fully containerized using **Docker Compose**, ensuring an iso
 │  │ Mistral LLM   │ ◄──► │ Tavily Search │ ◄──► │ Data Synthesis & Output  │  │
 │  └───────────────┘      └───────────────┘      └──────────────────────────┘  │
 └──────────────────────────────────────────────────────────────────────────────┘
+
+✨ Features
+Decoupled Architecture: Clean separation of concerns between the API layer and the Presentation layer.
+
+Multi-Agent Orchestration: Utilizes LangChain to manage autonomous research agents that query, scrape, and synthesize data.
+
+Environment-Agnostic: Packaged into optimized Docker containers (python:3.11-slim) with shared virtual networks.
+
+Defensive Configuration: Strict environment variable management and validation using Pydantic Settings.
+
+Layer Caching: Highly optimized Dockerfiles utilizing multi-stage cache mounting for minimal cloud storage footprint.
+
+🚀 Quick Start (Local Deployment)
+1. Prerequisites
+Docker Desktop installed and running.
+
+API Keys for Mistral AI and Tavily.
+
+2. Environment Setup
+Clone the repository and navigate into the root directory:
+
+Bash
+git clone [https://github.com/yourusername/multi-agent-research-system.git](https://github.com/yourusername/multi-agent-research-system.git)
+cd multi-agent-research-system
+Create a .env file in the root folder to securely store your keys:
+
+Ini, TOML
+MISTRAL_API_KEY=your_mistral_key_here
+TAVILY_API_KEY=your_tavily_key_here
+3. Launch the System
+Boot the container matrix using Docker Compose. This command automatically builds the images, establishes the secure network, and spins up both the API and UI containers.
+
+Bash
+docker-compose up --build
+4. Access the App
+Frontend UI: Navigate to http://localhost:8501
+
+Backend API Docs: Navigate to http://localhost:8000/docs to interact with the raw OpenAPI (Swagger) endpoints.
+
+☁️ Cloud Deployment (Docker Hub)
+The pre-built, production-ready images for this project have been pushed to Docker Hub. You can pull and run them directly without needing to build from the source code.
+
+Bash
+# Pull the pre-compiled images directly from the cloud
+docker pull dpk516/researchmind-api:v1
+docker pull dpk516/researchmind-ui:v1
