@@ -30,7 +30,7 @@ The application is fully containerized using **Docker Compose**, ensuring an iso
 │  └───────────────┘      └───────────────┘      └──────────────────────────┘  │
 └──────────────────────────────────────────────────────────────────────────────┘
 
-✨ Features
+## ✨ Features
 Decoupled Architecture: Clean separation of concerns between the API layer and the Presentation layer.
 
 Multi-Agent Orchestration: Utilizes LangChain to manage autonomous research agents that query, scrape, and synthesize data.
@@ -41,7 +41,7 @@ Defensive Configuration: Strict environment variable management and validation u
 
 Layer Caching: Highly optimized Dockerfiles utilizing multi-stage cache mounting for minimal cloud storage footprint.
 
-🚀 Quick Start (Local Deployment)
+## 🚀 Quick Start (Local Deployment)
 1. Prerequisites
 Docker Desktop installed and running.
 
@@ -68,7 +68,7 @@ Frontend UI: Navigate to http://localhost:8501
 
 Backend API Docs: Navigate to http://localhost:8000/docs to interact with the raw OpenAPI (Swagger) endpoints.
 
-☁️ Cloud Deployment (Docker Hub)
+## ☁️ Cloud Deployment (Docker Hub)
 The pre-built, production-ready images for this project have been pushed to Docker Hub. You can pull and run them directly without needing to build from the source code.
 
 Bash
