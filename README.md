@@ -96,8 +96,6 @@ ResearchMind is engineered as a decoupled microservices platform. The frontend a
 
 ---
 
-## 📂 Project Structure
-
 └── ResearchMind/
     ├── app/
     │   ├── agents/
@@ -123,6 +121,9 @@ ResearchMind is engineered as a decoupled microservices platform. The frontend a
     ├── LICENSE                     # MIT License
     ├── README.md                   # Project documentation
     └── requirements.txt            # Python dependencies
+
+
+---
 
 ---
 
