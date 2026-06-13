@@ -12,6 +12,7 @@ Detailed, cryptographic source-verified intelligence scans powered by decoupled 
 * [🎯 Why ResearchMind?](#-why-researchmind)
 * [🎯 📸 Screenshots](#-Screenshots)
 * [🏗️ System Architecture](#️-system-architecture)
+* [📂 Project Structure](#-project-structure)
 * [🧠 Multi-Agent Orchestration](#-multi-agent-orchestration)
 * [🚀 Quick Start](#-quick-start)
 
