@@ -257,5 +257,5 @@ Distributed under the MIT License. See the `LICENSE` file for more information.
 
 ---
 <div align="center">
-  <sub>Maintained  by <a href="https://github.com/dpk516">Deepak</a>
+  <sub> Maintained  by <a href="https://github.com/dpk516">Deepak</a>
 </div>
