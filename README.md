@@ -12,7 +12,6 @@ Detailed, cryptographic source-verified intelligence scans powered by decoupled 
 * [🎯 Why ResearchMind?](#-why-researchmind)
 * [🎯 📸 Screenshots](#-Screenshots)
 * [🏗️ System Architecture](#️-system-architecture)
-* [📂 Project Structure](#️-project-structure)
 * [🧠 Multi-Agent Orchestration](#-multi-agent-orchestration)
 * [🚀 Quick Start](#-quick-start)
 
@@ -92,9 +91,11 @@ ResearchMind is engineered as a decoupled microservices platform. The frontend a
      |    Mistral AI    |       |    Tavily AI     |
      |   (Inference)    |       |   (Web Search)   |
      +------------------+       +------------------+
-```
+
+
 
 ---
+## 📂 Project Structure
 
 └── ResearchMind/
     ├── app/
@@ -123,7 +124,6 @@ ResearchMind is engineered as a decoupled microservices platform. The frontend a
     └── requirements.txt            # Python dependencies
 
 
----
 
 ---
 
