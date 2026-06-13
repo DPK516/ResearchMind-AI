@@ -2,221 +2,225 @@
 
 ### Enterprise Multi-Agent AI Research Platform for Deep Intelligence and Insight Generation
 
-Detailed, cryptographic source-verified intelligence scans powered by decoupled microservice architectures.
+A containerized multi-agent AI research tool built with LangChain, FastAPI, and Streamlit to automate deep internet research and analysis.
+
+**What does this actually do?** Think of ResearchMind as your own personal team of expert analysts. You type in any topic, and a swarm of AI agents instantly searches the live internet, reads multiple sources, filters out biased information, and writes a highly detailed, professional research report and risk assessment for you in seconds.
+
+---
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square&logo=python" alt="Python Version">
+  <img src="https://img.shields.io/badge/FastAPI-0.100%2B-009688?style=flat-square&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Streamlit-1.30%2B-FF4B4B?style=flat-square&logo=streamlit" alt="Streamlit">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker" alt="Docker">
+  <img src="https://img.shields.io/badge/LangChain-Agents-1C3C3C?style=flat-square" alt="LangChain">
+  <img src="https://img.shields.io/badge/AWS-EC2%20Deployed-FF9900?style=flat-square&logo=amazonaws" alt="AWS EC2">
+  <img src="https://img.shields.io/badge/License-MIT-black?style=flat-square" alt="License">
+</div>
+
+<br />
+
+## 🖥️ Platform Overview
+
+### Live Dashboard
+![ResearchMind Dashboard](assets/dashboard.png)
+
+### Intelligence Payload Generation
+![Research Results](assets/results.png)
 
 ---
 
 ## 📖 Table of Contents
 
-* [✨ Core Features](#-core-features)
-* [🎯 Why ResearchMind?](#-why-researchmind)
-* [🏗️ System Architecture](#️-system-architecture)
-* [📂 Project Structure](#-project-structure)
-* [🧠 Multi-Agent Orchestration](#-multi-agent-orchestration)
-* [🚀 Quick Start](#-quick-start)
-
-  * [Prerequisites](#prerequisites)
-  * [Local Development Setup](#local-development-setup)
-  * [Docker Compose Deployment (Recommended)](#docker-compose-deployment-recommended)
-* [🌐 Cloud Deployment (AWS EC2)](#-cloud-deployment-aws-ec2)
-* [🔒 Environment Configuration](#-environment-configuration)
-* [📊 Production Observability & Logs](#-production-observability--logs)
+* [🎯 The Value Proposition](#-the-value-proposition)
+* [⚙️ System Architecture](#️-system-architecture)
+* [🧠 The AI Research Pipeline](#-the-ai-research-pipeline)
+* [💻 Developer Experience (Quick Start)](#-developer-experience-quick-start)
+* [☁️ Production Deployment (AWS EC2)](#️-production-deployment-aws-ec2)
+* [📝 Environment Configuration](#-environment-configuration)
+* [📄 License](#-license)
 
 ---
 
-## ✨ Core Features
+## 🎯 The Value Proposition
 
-* **Multi-Agent Swarm Integration:** Orchestrates complex reasoning patterns using collaborative AI agents powered by Mistral AI.
-* **Live Knowledge Graph Queries:** Utilizes Tavily AI APIs for real-time Web Intelligence and search optimization.
-* **Decoupled Cloud Architecture:** Highly-optimized standalone FastAPI backend interacting with an ultra-responsive, beautiful custom Streamlit frontend dashboard.
-* **Production-Grade Containerization:** Multi-stage Docker builds configured to communicate safely across isolated Docker bridge networks.
-* **Comprehensive Risk Appraisals:** Generates separate structured Markdown outputs for deep analytical insights and adjacent risk assessments/critiques.
+Traditional single-prompt LLM interactions fail when executing extensive market research or strategic intelligence gathering. They lack iterative verification mechanisms, often hallucinate facts, and cannot access real-time data.
 
----
-
-## 🎯 Why ResearchMind?
-
-Traditional single-prompt LLM interactions fail when tasked with executing extensive market research or strategic intelligence gathering. They lack iterative verification mechanisms and real-time validation.
-
-ResearchMind addresses this by treating research as a multi-stage software engineering pipeline:
-
-1. **Context Acquisition:** Breaking down complex queries into parallel search paradigms.
-2. **Bias Filtering:** Re-evaluating text resources through specialized AI agents to filter out noise and promotional content.
-3. **Payload Generation:** Synthesizing disparate data points into cohesive, analytical enterprise documentation.
+ResearchMind solves this by treating research as an automated, multi-stage software engineering pipeline powered by **LangChain**:
+1. **Context Acquisition:** Utilizes **Tavily AI** to perform live, deep-web knowledge graph queries.
+2. **Bias Filtering:** Re-evaluates text resources through specialized agent loops to filter out noise and promotional content.
+3. **Risk Assessment:** Employs a dedicated Critic Agent to identify logical gaps and generate adjacent risk appraisals.
+4. **Payload Generation:** Synthesizes disparate data points into cohesive, analytical enterprise documentation.
 
 ---
 
-## 📸 Screenshots
+## ⚙️ System Architecture
 
-### Dashboard
-
-![ResearchMind Dashboard](assets/dashboard.png)
-
-### Research Results
-
-![Research Results](assets/results.png)
-
-
----
-
-## 🏗️ System Architecture
-
-ResearchMind is engineered as a decoupled microservices platform. The frontend and backend run in completely isolated container environments, ensuring high scalability and fault tolerance.
+ResearchMind is engineered as a decoupled containerized application. The frontend and backend run in completely isolated Docker container environments, connected via an internal network bridge.
 
 ```text
-+-------------------------------------------------+
-|               User Web Browser                  |
-+-----------------------+-------------------------+
-                        |
-                 Port 8501 (HTTP)
-                        |
-                        v
-+-----------------------+-------------------------+
-|             Streamlit UI Container              |
-|               (researchmind-ui)                 |
-+-----------------------+-------------------------+
-                        |
-                 Internal Network
-               (http://api:8000/api/research)
-                        |
-                        v
-+-----------------------+-------------------------+
-|             FastAPI Backend Engine              |
-|               (researchmind-api)                |
-+-------------------+---------------+-------------+
-                    |               |
-        Outbound SSL|               |Outbound SSL
-                    v               v
-     +--------------+---+       +---+--------------+
-     |    Mistral AI    |       |    Tavily AI     |
-     |   (Inference)    |       |   (Web Search)   |
-     +------------------+       +------------------+
+        [ User Web Browser ]
+               ▲  │
+      Response │  │ HTTP Request (Port 8501)
+               │  ▼
+┌───────────────────────────────────────────┐
+│      AWS Cloud / Docker Environment       │
+│                                           │
+│             [ Streamlit UI ]              │
+│                    ▲  │                   │
+│      JSON Response │  │ Internal Network  │
+│                    │  ▼ (Port 8000)       │
+│                                           │
+│            [ FastAPI Backend ]            │
+│                    ▲  │                   │
+│                    │  ▼                   │
+│        ┌─────────────────────────┐        │
+│        │ LangChain Orchestrator  │        │
+│        │  (The Action Pipeline)  │        │
+│        └──────┬──▲─────────┬──▲──┘        │
+└───────────────┼──┼─────────┼──┼───────────┘
+                │  │         │  │
+                │  │         │  │ 
+                │  │         │  │    
+                ▼  │         ▼  │
+         [ Mistral AI ]  [ Tavily AI ]
 
----
+📂 Project Structure
 
-## 🧠 Multi-Agent Orchestration
-
-```mermaid
-graph TD
-    A[FastAPI Endpoint] --> B[Research Supervisor]
-    B --> C[Web Search Agent - Tavily]
-    C --> D[Data Extraction Agent]
-    D --> E[Analysis & Synthesis Agent]
-    E --> F[Reviewer / Critic Agent]
-    F -- Feedback Loop If Insufficient --> B
-    F -- Approved Payload --> G[Structured JSON Response]
+    ResearchMind/
+    ├── app/
+    │   ├── agents/
+    │   │   ├── builder.py          
+    │   │   └── tools.py            
+    │   ├── api/
+    │   │   └── routes.py           
+    │   ├── core/
+    │   │   └── config.py           
+    │   ├── services/
+    │   │   └── research.py         
+    │   └── main.py                 
+    ├── frontend/
+    │   └── streamlit_app.py        
+    ├── assets/                     
+    ├── .env                        
+    ├── docker-compose.yml          
+    ├── Dockerfile.backend          
+    ├── Dockerfile.frontend         
+    ├── LICENSE                     
+    ├── README.md                  
+    └── requirements.txt
 ```
-
-### The Supervisor
-
-Parses user queries into actionable micro-tasks and updates system routing parameters.
-
-### The Search & Extraction Team
-
-Performs live contextual lookup, sanitizes incoming DOM hierarchies, and strips tracker nodes.
-
-### The Critic
-
-Validates facts, identifies logical gaps, and populates the dedicated Risk Assessment module.
-
 ---
+## 🧠 The AI Research Pipeline
 
-# 🚀 Quick Start
+ResearchMind processes user queries through a strictly orchestrated, four-step LangChain execution pipeline. By decoupling the agents into specialized roles, the system ensures high-quality data extraction and rigorous risk assessment.
 
-## Prerequisites
+### 1️⃣ Initial Web Search
+* **Engine:** LangChain Search Agent (`create_tool_calling_agent`) + Tavily API
+* **Action:** Receives the target topic and autonomously executes optimal internet searches to gather recent, reliable information, returning titles, URLs, and snippet context.
 
-* Python 3.10 or higher installed locally
-* Docker and Docker Compose installed
+### 2️⃣ Deep-Dive URL Scraping
+* **Engine:** LangChain Reader Agent + Custom Web Scraper (`BeautifulSoup` & `aiohttp`)
+* **Action:** Analyzes the initial search results, identifies the most highly relevant URL, and performs a deep scrape of the webpage. It automatically sanitizes the DOM (stripping scripts, navbars, and footers) to extract pure text context.
+
+### 3️⃣ Report Synthesis
+* **Engine:** Mistral AI Writer Chain
+* **Action:** Merges the broad search snippets with the deep-scraped text payload. It processes this combined context to draft a cohesive, highly structured intelligence report (Introduction, Findings, Conclusion, Sources).
+
+### 4️⃣ Strategic Risk Assessment
+* **Engine:** Mistral AI Risk Analyst Chain
+* **Action:** Acts as an independent Enterprise Risk Analyst. It reviews the generated draft—not to grade the writing, but to provide a strictly professional disclaimer identifying potential source biases, unverified assumptions, and external market risks.
+
+### ⚙️ Execution Flow
+
+```text
+        [ FastAPI Endpoint ]
+                 │
+                 ▼ (User Topic)
+   ┌───────────────────────────────────┐
+   │ 1️⃣  Initial Web Search           │
+   │     (LangChain + Tavily API)      │
+   └─────────────┬─────────────────────┘
+                 │ Returns URLs & Snippets
+                 ▼ 
+   ┌───────────────────────────────────┐
+   │ 2️⃣  Deep-Dive URL Scraping       │
+   │     (LangChain + BeautifulSoup)   │
+   └─────────────┬─────────────────────┘
+                 │ Returns Cleaned DOM Text
+                 ▼ 
+   ┌───────────────────────────────────┐
+   │ 3️⃣  Report Synthesis             │
+   │     (Mistral AI Writer Chain)     │
+   └─────────────┬─────────────────────┘
+                 │ Returns Draft Markdown Report
+                 ▼ 
+   ┌───────────────────────────────────┐
+   │ 4️⃣  Strategic Risk Assessment    │
+   │     (Mistral AI Risk Chain)       │
+   └─────────────┬─────────────────────┘
+                 │ Returns Bias & Risk Feedback
+                 ▼ 
+    [ Final Structured JSON Payload ]
+```
+---
+## 💻 Developer Experience (Quick Start)
+
+### Prerequisites
+* Python 3.10+
+* Docker & Docker Compose
 * API Keys for Mistral AI and Tavily AI
 
-## Local Development Setup
+### Method-1 One-Click Local Deploy (Docker Compose)
+The fastest way to test the environment locally is via our multi-container setup:
 
-### Clone the Repository
-
+**1. Clone the repository and configure environment variables:**
 ```bash
-git clone https://github.com/dpk516/researchmind.git
+git clone [https://github.com/dpk516/researchmind.git](https://github.com/dpk516/researchmind.git)
 cd researchmind
+
+# Create the .env file
+echo "MISTRAL_API_KEY=your_actual_key_here" >> .env
+echo "TAVILY_API_KEY=your_actual_key_here" >> .env
 ```
-
-### Configure Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-MISTRAL_API_KEY=your_actual_mistral_key_without_quotes
-TAVILY_API_KEY=your_actual_tavily_key_without_quotes
-```
-
-### Run the Backend (FastAPI)
-
-```bash
-cd backend
-
-python -m venv venv
-
-# Linux / macOS
-source venv/bin/activate
-
-# Windows
-venv\Scripts\activate
-
-pip install -r requirements.txt
-
-uvicorn main:app --reload --port 8000
-```
-
-### Run the Frontend (Streamlit)
-
-Open a new terminal:
-
-```bash
-cd frontend
-
-python -m venv venv
-
-# Linux / macOS
-source venv/bin/activate
-
-# Windows
-venv\Scripts\activate
-
-pip install -r requirements.txt
-
-export API_URL=http://127.0.0.1:8000/api/research
-# Windows:
-# set API_URL=http://127.0.0.1:8000/api/research
-
-streamlit run streamlit_app.py --server.port 8501
-```
-
----
-
-## Docker Compose Deployment (Recommended)
-
+**2. Spin up the cluster:**
 ```bash
 docker-compose up -d --build
 ```
+Access the application immediately at: http://localhost:8501
 
-Access the application at:
+### Method-2 Standard Local Setup
+If you prefer running the Python environments manually:
 
-```text
-http://localhost:8501
+**1. Start the FastAPI Backend:**
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
 ```
-
+**2. Start the Streamlit Frontend:**
+Open a new terminal session:
+```bash
+cd frontend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+export API_URL=[http://127.0.0.1:8000/api/research](http://127.0.0.1:8000/api/research)  # Windows: set API_URL=...
+streamlit run streamlit_app.py --server.port 8501
+```
 ---
 
-# 🌐 Cloud Deployment (AWS EC2)
+## ☁️ Production Deployment (AWS EC2)
 
-ResearchMind is optimized for deployment on Linux cloud instances such as Ubuntu EC2 instances.
+ResearchMind is optimized for deployment on Linux cloud instances (e.g., Ubuntu EC2).
 
-### Create Docker Network
-
+**1. Establish the internal container network:**
 ```bash
 docker network create research-net
 ```
-
-### Deploy Backend
-
+**2. Deploy the Backend Engine (injecting safe variables):**
 ```bash
 docker run -d \
   --name api \
@@ -225,9 +229,7 @@ docker run -d \
   --env-file .env \
   dpk516/researchmind-api:v1
 ```
-
-### Deploy Frontend
-
+**3. Deploy the UI connected to the Backend Bridge:**
 ```bash
 docker run -d \
   --name ui \
@@ -236,44 +238,24 @@ docker run -d \
   -e API_URL=http://api:8000/api/research \
   dpk516/researchmind-ui:v1
 ```
-
 ---
 
-# 🔒 Environment Configuration
+## 📝 Environment Configuration
 
-| Key             | Expected Format   | Scope              | Description                                 |
-| --------------- | ----------------- | ------------------ | ------------------------------------------- |
-| MISTRAL_API_KEY | Plain text string | Backend Container  | Authenticates runtime LLM payload routing   |
-| TAVILY_API_KEY  | Plain text string | Backend Container  | Authorizes secure web intelligence searches |
-| API_URL         | Valid URI         | Frontend Container | Points Streamlit requests to the API        |
+Configure the following environment variables to connect the backend application to the required external APIs.
 
-> ⚠️ **Warning**
->
-> Passing environment variables with quotes (e.g., `MISTRAL_API_KEY="xyz123"`) may cause authentication failures and 401 Unauthorized responses from provider APIs.
+| Variable          | Location           | Purpose                                              |
+| :---              | :---               | :---                                                 |
+| `MISTRAL_API_KEY` | Backend Container  | API key for Mistral AI to power the LLM reasoning.   |
+| `TAVILY_API_KEY`  | Backend Container  | API key for Tavily AI to perform live web searches.  |
+
+> **Note:** Do not use quotation marks around your API keys in the `.env` file (e.g., avoid `MISTRAL_API_KEY="xyz123"`). Docker reads the quotes as part of the actual key, which will cause authentication errors.
+---
+## 📄 License
+
+Distributed under the MIT License. See the `LICENSE` file for more information.
 
 ---
-
-# 📊 Production Observability & Logs
-
-ResearchMind follows cloud-native Twelve-Factor App principles by streaming logs directly to stdout.
-
-### Live Backend Logs
-
-```bash
-docker logs -f api
-```
-
-### Recent Backend Logs
-
-```bash
-docker logs --tail 100 api
-```
-
-### Frontend Logs
-
-```bash
-docker logs ui
-```
-
----
-
+<div align="center">
+  <sub>Maintained  by <a href="https://github.com/dpk516">Deepak</a>
+</div>
