@@ -10,7 +10,6 @@ Detailed, cryptographic source-verified intelligence scans powered by decoupled 
 
 * [✨ Core Features](#-core-features)
 * [🎯 Why ResearchMind?](#-why-researchmind)
-* [🎯 📸 Screenshots](#-Screenshots)
 * [🏗️ System Architecture](#️-system-architecture)
 * [📂 Project Structure](#-project-structure)
 * [🧠 Multi-Agent Orchestration](#-multi-agent-orchestration)
@@ -92,39 +91,6 @@ ResearchMind is engineered as a decoupled microservices platform. The frontend a
      |    Mistral AI    |       |    Tavily AI     |
      |   (Inference)    |       |   (Web Search)   |
      +------------------+       +------------------+
-
-
-
----
-## 📂 Project Structure
-
-└── ResearchMind/
-    ├── app/
-    │   ├── agents/
-    │   │   ├── builder.py          # Multi-agent orchestration and agent construction
-    │   │   └── tools.py            # Custom tools and utilities used by agents
-    │   ├── api/
-    │   │   └── routes.py           # FastAPI API endpoints
-    │   ├── core/
-    │   │   └── config.py           # Environment variables and application settings
-    │   ├── services/
-    │   │   └── research.py         # Research pipeline and business logic
-    │   └── main.py                 # FastAPI application entry point
-    ├── frontend/
-    │   └── streamlit_app.py        # Streamlit user interface
-    ├── assets/
-    │   ├── dashboard.png           # Dashboard screenshot
-    │   └── results.png             # Research results screenshot
-    ├── .env                        # Environment variables (local only)
-    ├── .gitignore                  # Git ignore rules
-    ├── docker-compose.yml          # Multi-container orchestration
-    ├── Dockerfile.backend          # Backend container image
-    ├── Dockerfile.frontend         # Frontend container image
-    ├── LICENSE                     # MIT License
-    ├── README.md                   # Project documentation
-    └── requirements.txt            # Python dependencies
-
-
 
 ---
 
