@@ -74,7 +74,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Uses environment variable for Docker compatibility, defaults to localhost
+
 API_URL = os.getenv("API_URL", "http://127.0.0.1:8000/api/research")
 
 with st.sidebar:
@@ -106,17 +106,17 @@ if launch:
         st.divider()
         start_time = time.time()
         
-        # Enterprise/Military Vibe Loading Sequence
+        
         with st.status("Initiating Deep Intelligence Scan...", expanded=True) as status:
             
             st.write("Establishing secure connection to distributed knowledge graphs...")
-            time.sleep(0.8) # Micro-delay for visual pacing
+            time.sleep(0.8) 
             
             st.write("Querying live data streams and acquiring target context...")
             time.sleep(0.5)
             
             try:
-                # The blocking API call happens here
+                
                 response = requests.post(API_URL, json={"topic": topic})
                 
                 if response.status_code == 200:
