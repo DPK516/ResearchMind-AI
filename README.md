@@ -1,8 +1,7 @@
 # ⬛ ResearchMind
 
-### Enterprise Multi-Agent AI Research Platform for Deep Intelligence and Insight Generation
-
-A containerized multi-agent AI research tool built with LangChain, FastAPI, and Streamlit to automate deep internet research and analysis.
+### Production-Ready Multi-Agent AI Research System
+A containerized AI research platform built with LangChain, FastAPI, Streamlit, and Docker that autonomously gathers, analyzes, and synthesizes information from multiple sources into structured research reports.
 
 **What does this actually do?** Think of ResearchMind as your own personal team of expert analysts. You type in any topic, and a swarm of AI agents instantly searches the live internet, reads multiple sources, filters out biased information, and writes a highly detailed, professional research report and risk assessment for you in seconds.
 
@@ -44,13 +43,15 @@ A containerized multi-agent AI research tool built with LangChain, FastAPI, and 
 
 ## 🎯 The Value Proposition
 
-Traditional single-prompt LLM interactions fail when executing extensive market research or strategic intelligence gathering. They lack iterative verification mechanisms, often hallucinate facts, and cannot access real-time data.
+Deep research tasks often involve gathering information from multiple sources, evaluating credibility, and synthesizing findings—activities that can benefit from a multi-stage workflow.
+ResearchMind addresses these architectural limitations by shifting from a single-prompt interaction to a multi-stage software pipeline powered by LangChain:
 
-ResearchMind solves this by treating research as an automated, multi-stage software engineering pipeline powered by **LangChain**:
-1. **Context Acquisition:** Utilizes **Tavily AI** to perform live, deep-web knowledge graph queries.
-2. **Bias Filtering:** Re-evaluates text resources through specialized agent loops to filter out noise and promotional content.
-3. **Risk Assessment:** Employs a dedicated Critic Agent to identify logical gaps and generate adjacent risk appraisals.
-4. **Payload Generation:** Synthesizes disparate data points into cohesive, analytical enterprise documentation.
+1. **Task Orchestration:** The FastAPI backend receives the user's topic and dynamically routes it to the specialized LangChain execution agents.
+2. **Live Context Acquisition:** Uses Tavily AI to pull current, real-time context directly from the web, bypassing standard knowledge-cutoff dates.
+3. **Targeted Extraction & Filtering:** Scrapes the most relevant URLs and automatically sanitizes the DOM to extract pure text, aggressively filtering out site noise and promotional clutter.
+4. **Data Synthesis:** Uses Mistral AI to read the compiled external data and synthesize it into a cohesive, highly structured analytical report.
+5. **Automated Critique:** Runs a final, independent "Risk Assessment" chain to explicitly flag potential source biases, market risks, or unverified claims.
+6. **Structured Delivery:** Packages the verified report and risk data into a clean JSON payload, delivering it instantly to the Streamlit UI.
 
 ---
 
