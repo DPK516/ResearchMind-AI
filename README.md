@@ -1,9 +1,10 @@
 # ⬛ ResearchMind
 
 ### Production-Ready Multi-Agent AI Research System
-A containerized AI research platform built with LangChain, FastAPI, Streamlit, and Docker that autonomously gathers, analyzes, and synthesizes information from multiple sources into structured research reports.
+A containerized AI research platform—built with LangChain, FastAPI, and Streamlit, and deployed on AWS EC2 via Docker—that autonomously gathers, analyzes, and synthesizes information from multiple sources into structured research reports.
 
-**What does this actually do?** Think of ResearchMind as your own personal team of expert analysts. You type in any topic, and a swarm of AI agents instantly searches the live internet, reads multiple sources, filters out biased information, and writes a highly detailed, professional research report and risk assessment for you in seconds.
+**What does this actually do?** 
+ResearchMind automates the heavy lifting of online research. You provide a topic, and the system coordinates multiple AI agents to search the live web, extract clean text from relevant sites, synthesize the findings into a structured report, and explicitly flag potential risks or unverified claims—delivering a complete analysis in seconds.
 
 ---
 
